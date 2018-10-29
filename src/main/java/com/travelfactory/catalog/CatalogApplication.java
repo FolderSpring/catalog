@@ -18,10 +18,6 @@ public class CatalogApplication implements CommandLineRunner {
 
     private Logger log = LoggerFactory.getLogger(VendorController.class);
 
-//    public static void main(String[] args) {
-//        SpringApplication.run(CatalogApplication.class, args);
-//    }
-
     public static void main(String[] args) {
         new SpringApplicationBuilder() //
                 .sources(CatalogApplication.class)//
