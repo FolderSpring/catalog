@@ -1,5 +1,8 @@
-# catalog
-VendorInfo
+# REST SERVICE - Vendor Info
+
+- /catalog/ - main page with info about service
+- /catalog/booking/21-12-2016 - get info about vendor by date
+- /catalog/booking/21-12-2016/2 - get info about vendor by date by id
 
 
 <h1>SIMPLE SPRING BOOT APPLICATION - Vendor Info</h1>
