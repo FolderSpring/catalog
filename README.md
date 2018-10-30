@@ -1,8 +1,8 @@
 # REST SERVICE - Vendor Info
-<p>/catalog/ - main page with info about service</p>
-<p>/catalog/booking/21-12-2016 - get info about vendor by date</br>
+<p><b> > /catalog/</b> - main page with info about service</p>
+<p><b> > /catalog/booking/21-12-2016</b> - get info about vendor by date</br>
 [{"id":"2","name":"P2alace H2otel","roomNumber":"1932"},{"id":"3","name":"Bé2atrice Imp2érial Hot2el","roomNumber":"164"},{"id":"4","name":"D2an Bou2tique","roomNumber":"88"}]</p>
-<p>/catalog/booking/21-12-2016/2 - get info about vendor by date by id</br>
+<p><b> > /catalog/booking/21-12-2016/2</b> - get info about vendor by date by id</br>
 {"id":"2","name":"Pa2lace Hot2el","roomNumber":"1932"}</p>
 
 # SIMPLE SPRING BOOT APPLICATION - Vendor Info
