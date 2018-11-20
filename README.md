@@ -15,4 +15,7 @@
 <p>We can check if image created by running command:</p>
 <p>> docker images</p>
 <p>Now we can start container from our newly created image</p>
-<p>> docker run --name web -p 8080:8080 springboot</p>
+<p>> docker run --name web -p 8080:8080 springboot</p><br>
+
+<p>SWAGGER:</p>
+<p>/swagger-ui.html#/catalog</p>
