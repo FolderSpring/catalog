@@ -2,6 +2,9 @@ package com.travelfactory.catalog.controllers;
 
 import com.google.gson.Gson;
 import com.travelfactory.catalog.repositories.VendorInfoRepository;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/catalog")
+@Api(tags = "catalog", description = "Manage catalog")
 public class VendorController {
 
     @Autowired
@@ -21,29 +25,22 @@ public class VendorController {
 
     private Logger log = LoggerFactory.getLogger(VendorController.class);
 
-    /**
-     * Shows info about service
-     *
-     * @return
-     */
     @RequestMapping(value = "/", method = RequestMethod.GET, produces = "text/html")
+    @ApiOperation(value = "About service", notes = "Show info about service", response = String.class)
     public String root() {
         log.info("requested root");
         return "<h1>REST SERVICE - Vendor Info</h1>" +
-                "<p>- /catalog/ - main page with info about service</p>" +
-                "<p>- /catalog/booking/21-12-2016 - get info about vendor by date</p>" +
-                "<p>- /catalog/booking/21-12-2016/2 - get info about vendor by date by id</p>";
+                "<p>- <a href='http://localhost:8080/catalog/'>/catalog/</a> - main page with info about service</p>" +
+                "<p>- <a href='http://localhost:8080/catalog/booking/21-12-2016'>/catalog/booking/21-12-2016</a> - get info about vendor by date</p>" +
+                "<p>- <a href='http://localhost:8080/catalog/booking/21-12-2016/2'>/catalog/booking/21-12-2016/2</a> - get info about vendor by date by id</p>" +
+                "</br></br><p>SWAGGER: <a href='http://localhost:8080/swagger-ui.html#/catalog'>http://localhost:8080/swagger-ui.html#/catalog</a></p>";
     }
 
-    /**
-     * Retrieves data by vendor name and date
-     *
-     * @param vendor
-     * @param date
-     * @return
-     */
     @RequestMapping(value = "/{vendor}/{date}", method = RequestMethod.GET)
-    public String getVendorByDate(@PathVariable("vendor") String vendor, @PathVariable("date") String date) {
+    @ApiOperation(value = "Get vendor DATA by date", notes = "Retrieves data by vendor name and date", response = String.class)
+    public String getVendorByDate(
+            @ApiParam( value = "Vendor name", required = true, defaultValue = "booking") @PathVariable("vendor") String vendor,
+            @ApiParam( value = "Date", required = true, defaultValue = "21-12-2016") @PathVariable("date") String date) {
         log.info("requested getVendorByDate");
         log.info("PARAMS vendor:" + vendor + ", date:" + date);
 
@@ -54,16 +51,12 @@ public class VendorController {
         return result;
     }
 
-    /**
-     * Retrieves data by vendor name, date and id
-     *
-     * @param vendor
-     * @param date
-     * @param id
-     * @return
-     */
     @RequestMapping(value = "/{vendor}/{date}/{id}", method = RequestMethod.GET)
-    public String getPetById(@PathVariable("vendor") String vendor, @PathVariable("date") String date, @PathVariable("id") String id) {
+    @ApiOperation(value = "Get vendor DATA by date and id", notes = "Retrieves data by vendor name, date and id", response = String.class)
+    public String getPetById(
+            @ApiParam( value = "Vendor name", required = true, defaultValue = "booking") @PathVariable("vendor") String vendor,
+            @ApiParam( value = "Date", required = true, defaultValue = "21-12-2016") @PathVariable("date") String date,
+            @ApiParam( value = "Id", required = true, defaultValue = "2") @PathVariable("id") String id) {
         log.info("requested getVendorByDate");
         log.info("PARAMS vendor: " + vendor + ", date:" + date + ", id:" + id);
 
